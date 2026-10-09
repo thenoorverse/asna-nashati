@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+
+html { direction: rtl; }
+
+body {
+  font-family: "Tajawal", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  background: #F7F5EF;
+  color: #1f2937;
+}
+
+:focus-visible {
+  outline: 3px solid #176B61;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .print-page {
+    box-shadow: none !important;
+    margin: 0 !important;
+    border: none !important;
+  }
+}
+
+/* ورقة A4 للمعاينة والطباعة */
+.sheet-a4 {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+}
+@media (max-width: 900px) {
+  .sheet-a4 { width: 100%; min-height: auto; }
+}
+@page { size: A4; margin: 12mm; }
+
+.avoid-break { break-inside: avoid; page-break-inside: avoid; }
