@@ -1,6 +1,6 @@
 "use client";
-import { useMemo, useState, useRef, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useMemo, useState, useRef, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Shell, PlayBanner } from "@/components/layout";
 import { Button, Card, ProgressBar, inputCls } from "@/components/ui";
@@ -22,7 +22,16 @@ import { ArrowLeft, ArrowRight, Printer, RotateCcw, EyeOff } from "lucide-react"
 const HELPS: HelpLevel[] = ["مستقل", "تلميح لفظي", "تلميح بصري", "مساعدة جزئية", "مساعدة كلية"];
 
 export default function PlayPage() {
-  const { id } = useParams<{ id: string }>();
+  return (
+    <Suspense fallback={<Shell><p className="p-8 font-bold">جارٍ تحميل النشاط...</p></Shell>}>
+      <PlayInner />
+    </Suspense>
+  );
+}
+
+function PlayInner() {
+  const params = useSearchParams();
+  const id = params.get("id") ?? "public-demo";
   const router = useRouter();
   const { db, saveAttempt, aliases } = useDemo();
 

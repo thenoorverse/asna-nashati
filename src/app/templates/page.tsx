@@ -18,7 +18,7 @@ export default function TemplatesPage() {
       <h1 className="text-2xl font-extrabold text-[#0F4A44]">مكتبة القوالب الجاهزة</h1>
       <p className="text-gray-600">٨ قوالب حقيقية بأسئلة وإجابات فعلية — انسخي وعدّلي دون المساس بالأصل.</p>
       <div className="mt-2">
-        <Link href="/play/public-demo" className="inline-flex min-h-[48px] items-center gap-2 rounded-2xl bg-[#E6F1EC] px-4 font-bold text-[#176B61]">
+        <Link href="/play?id=public-demo" className="inline-flex min-h-[48px] items-center gap-2 rounded-2xl bg-[#E6F1EC] px-4 font-bold text-[#176B61]">
           <Play size={18} /> جرّبي نشاطًا عامًا الآن — بدون دخول
         </Link>
       </div>

@@ -149,7 +149,7 @@ function StudioInner() {
     } else {
       id = await saveActivity({ ...meta, id: "", status: "published" }, payload as never);
     }
-    router.push(`/play/${id}`);
+    router.push(`/play?id=${id}`);
   };
 
   const previewItems: ActivityItem[] = items.map((d, i) => {

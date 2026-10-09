@@ -160,7 +160,7 @@ function DashboardInner() {
                 </div>
                 <div className="mt-2"><Badge tone="gray">{ACTIVITY_TYPE_LABEL[a.activityType]}</Badge></div>
                 <div className="mt-3 flex flex-wrap gap-1.5">
-                  <Link href={`/play/${a.id}`} className="inline-flex min-h-[44px] items-center gap-1 rounded-xl bg-[#176B61] px-3 font-bold text-white"><Play size={16} /> تشغيل</Link>
+                  <Link href={`/play?id=${a.id}`} className="inline-flex min-h-[44px] items-center gap-1 rounded-xl bg-[#176B61] px-3 font-bold text-white"><Play size={16} /> تشغيل</Link>
                   <Link href={`/studio?id=${a.id}`} className="inline-flex min-h-[44px] items-center gap-1 rounded-xl bg-gray-100 px-3 font-bold"><Pencil size={16} /> تعديل</Link>
                   <button onClick={() => onDuplicate(a.id)} className="inline-flex min-h-[44px] items-center gap-1 rounded-xl bg-gray-100 px-3 font-bold"><Copy size={16} /> نسخ</button>
                   <button onClick={() => onDelete(a.id, a.title)} className="inline-flex min-h-[44px] items-center gap-1 rounded-xl bg-red-50 px-3 font-bold text-red-600"><Trash2 size={16} /> حذف</button>
@@ -183,7 +183,7 @@ function DashboardInner() {
                     <td className="p-3"><Badge tone={a.status === "draft" ? "gold" : "mint"}>{a.status === "draft" ? "مسودة" : "منشور"}</Badge></td>
                     <td className="p-3 text-sm text-gray-500">{formatDateAr(a.updatedAt)}</td>
                     <td className="p-3"><span className="flex gap-1">
-                      <Link href={`/play/${a.id}`} aria-label="تشغيل" className="grid h-10 w-10 place-items-center rounded-xl bg-[#E6F1EC] text-[#176B61]"><Play size={16} /></Link>
+                      <Link href={`/play?id=${a.id}`} aria-label="تشغيل" className="grid h-10 w-10 place-items-center rounded-xl bg-[#E6F1EC] text-[#176B61]"><Play size={16} /></Link>
                       <Link href={`/studio?id=${a.id}`} aria-label="تعديل" className="grid h-10 w-10 place-items-center rounded-xl bg-gray-100"><Pencil size={16} /></Link>
                       <Link href={`/reports?activity=${a.id}`} aria-label="التقرير" className="grid h-10 w-10 place-items-center rounded-xl bg-gray-100"><FileText size={16} /></Link>
                       <button aria-label="حذف" onClick={() => onDelete(a.id, a.title)} className="grid h-10 w-10 place-items-center rounded-xl bg-red-50 text-red-600"><Trash2 size={16} /></button>

@@ -51,6 +51,21 @@ supabase/migrations/  ترحيلات SQL + RLS
 e2e/              اختبارات Playwright
 ```
 
+## النشر على GitHub Pages (موقع ثابت — بدون Vercel)
+
+المشروع مُصدَّر كموقع ثابت (`output: 'export'`) ويعمل بالكامل على GitHub Pages:
+
+```bash
+npm run build   # يُنتج مجلد out/
+```
+
+- الرابط بعد النشر: **https://thenoorverse.github.io/asna-nashati/**
+- ملف `.github/workflows/deploy.yml` يبني ويفحص (`npm test` + `npm run db:check`) وينشر تلقائيًا عند الدفع لـ `main`.
+- متغير البناء `NEXT_BASE_PATH=/asna-nashati` يُضبط في الـ workflow فقط — التطوير محليًا يبقى على الجذر.
+- مسارات التشغيل بصيغة Query (`/play?id=...`) لتعمل على الاستضافة الثابتة، بما فيها الروابط المباشرة والتحديث.
+- للتفعيل أول مرة: Settings → Pages → Source: **GitHub Actions**.
+- (اختياري) مفاتيح Supabase عبر Secrets، وإضافة رابط الموقع لقائمة Redirect في Supabase.
+
 ## Supabase (اختياري — بدونه يعمل وضع Demo تلقائيًا)
 
 انسخ `.env.example` إلى `.env.local` وعبّئ المفاتيح، ثم طبّق الترحيلات بالترتيب:

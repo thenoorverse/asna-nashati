@@ -9,7 +9,8 @@ test("الرحلة الأساسية: الرئيسية ← القوالب ← ا�
   await page.getByRole("link", { name: /تخصيص هذا القالب/ }).first().click();
   await expect(page.getByText(/استوديو التصميم/)).toBeVisible();
   await page.getByRole("link", { name: /لوحة التحكم/ }).first().click();
-  await expect(page.getByText(/أهلًا/)).toBeVisible();
+  await expect(page).toHaveURL(/\/dashboard/, { timeout: 20000 });
+  await expect(page.getByText(/أهلًا/)).toBeVisible({ timeout: 15000 });
 });
 
 test("وضع الطالبة يعرض سؤالًا واحدًا مع زر الاستماع", async ({ page }) => {
@@ -57,7 +58,7 @@ test("رحلة كاملة: إنشاء نشاط ونشره وتشغيله وظه�
 });
 
 test("النشاط العام يعمل بدون دخول", async ({ page }) => {
-  await page.goto("/play/some-unknown-id");
+  await page.goto("/play?id=some-unknown-id");
   await expect(page.getByRole("heading", { name: /نشاط عام للتجربة/ })).toBeVisible({ timeout: 15000 });
   await expect(page.getByText(/بدون تسجيل دخول/)).toBeVisible();
 });
@@ -70,7 +71,7 @@ test("إدارة الرموز المستعارة من اللوحة", async ({ pa
 });
 
 test("النشاط العام (العد): إجابة وتسجيل محاولة", async ({ page }) => {
-  await page.goto("/play/public-demo");
+  await page.goto("/play?id=public-demo");
   // الأسئلة: ٢، ٣، ٤، ٥ — الخيارات تتضمن الإجابة
   for (const [q, ans] of [["سؤال 1 من 4", "2"], ["سؤال 2 من 4", "3"], ["سؤال 3 من 4", "4"]] as const) {
     await expect(page.getByText(q).first()).toBeVisible({ timeout: 15000 });
